@@ -73,15 +73,15 @@ router.post('/login', async(req, res, next) => {
 
 
 router.get('/', async (req, res, next) => {
-  const user = await User.findById(req.user)
-  if(!user){
-    res.json({msg: "User doesn't exist"})
-  } else {
-    res.json({
-      msg: "Hi There"
-    })
+  // const user = await User.findById(req.user)
+  const user = await User.find()
+  if (!user) {
+    res.json({ msg: "User doesn't exist" })
   }
-
+  res.json({
+    // msg: 'Hi there',
+    user: user
+  })
 })
 
 module.exports = router
